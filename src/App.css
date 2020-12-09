@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html {
+    background: #d1e8e2;
+}
+
+body {
+    max-height: 1024px;
+    max-width: 1440px;
+    margin: auto;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.logo {
+    margin-top: 20px;
+    width: 350px;
+    cursor: pointer;
+    text-shadow: #702a12;
+}
+
+.navbar {
+    text-decoration: none;
+    width: 85%;
+    height: 15%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navlinks {
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-content: space-between;
+}
+
+button {
+    color: #faf3d0;
+    padding: 10px 25px;
+    border-radius: 30px;
+    background: #702a12;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+button:hover {
+    transform: scale(1.05)
+}
+
+.m2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.m2 h1 {
+    font-size: 82px;
+    color: #D1E8E2;
+    line-height: 1.5;
+    padding-right: 60px;
+    padding-top: 150px;
+    padding-bottom: 250px;
+    text-align: right;
+    align-self: flex-end;
+}
+
+.m2 h1 span {
+    color: #ffcb9a;
+}
+
+.content {
+    background-image: url(assetssrc/itit.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    color: #faf3d0;
+    z-index: 2;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 75px;
+    margin: 10px 0 30px;
+    line-height: 80px;
+    width: 500px;
+}
+
+.side-bar {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 50px;
+    height: 100vh;
+    background: linear-gradient(#ea5c2e, #702a12);
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.menu {
+    display: block;
+    width: 25px;
+    margin: 56px auto 0;
+    cursor: pointer;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.socialLink {
+    margin-bottom: 10px;
+}
+
+.socialIcon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.work {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.workpic {
+    width: 600px;
+    padding-right: 100px;
+}
+
+.work1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.work1 p {
+    font-size: x-large;
+    height: 400px;
+    width: 500px;
+}
+
+footer {
+    letter-spacing: 6px;
+    background: linear-gradient(90deg, #ea5c2e, #702a12);
+    color: #faf3d0;
+    font-family: sans-serif;
+    font-size: smaller
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+}
