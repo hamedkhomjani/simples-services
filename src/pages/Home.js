@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Home = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -12,13 +12,14 @@ const Home = () => {
 
     return (
         <div className="page-home">
+            {/* HERO SECTION */}
             <section className="hero">
                 <div className="content">
                     <motion.div
                         className="m2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
                     >
                         <h1>BEST "<span>IT</span>" SERVICES BUT SIMPLE</h1>
                         <p className="hero-subtitle">
@@ -35,6 +36,7 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* PARTNERS SECTION */}
             <section className="partners">
                 <div className="container">
                     <h4 className="partners-title">TRUSTED BY INNOVATIVE COMPANIES</h4>
@@ -48,25 +50,36 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="features">
+            {/* OUR SERVICES (ITTREE.SVG) SECTION */}
+            <section className="our-services-home">
                 <div className="container">
-                    <h2 className="section-title">Why Simple Services?</h2>
-                    <div className="features-grid">
-                        {[
-                            { icon: '🚀', title: 'Fast Delivery', text: 'We value your time. Our agile approach ensures rapid deployment of your projects.' },
-                            { icon: '🛡️', title: 'Secure Solutions', text: 'Security is baked into everything we build, from web apps to cloud infra.' },
-                            { icon: '💎', title: 'Premium Quality', text: 'Simple doesn\'t mean basic. We provide world-class quality with a clean experience.' }
-                        ].map((feature, index) => (
-                            <div key={index} className="feature-card">
-                                <div className="icon">{feature.icon}</div>
-                                <h3>{feature.title}</h3>
-                                <p>{feature.text}</p>
+                    <div className="services-showcase">
+                        <motion.div
+                            className="services-text-box"
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                        >
+                            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '2rem' }}>Our Services</h2>
+                            <h3>Technical Excellence</h3>
+                            <p>We combine deep expertise with a passion for simplicity. Our solutions are built to scale, perform, and most importantly, work for you without the headache.</p>
+                            <div className="simple-features">
+                                <div>🚀 Fast Delivery</div>
+                                <div>🛡️ Secure Solutions</div>
+                                <div>💎 Premium Quality</div>
                             </div>
-                        ))}
+                        </motion.div>
+                        <motion.div
+                            className="services-image-box"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                        >
+                            <img src="./assetssrc/ittree.svg" alt="IT Services" className="ittree-svg" />
+                        </motion.div>
                     </div>
                 </div>
             </section>
 
+            {/* TESTIMONIALS SECTION */}
             <section className="testimonials">
                 <div className="container">
                     <h2 className="section-title">What Our Clients Say</h2>
@@ -75,16 +88,21 @@ const Home = () => {
                             { name: 'Sarah Johnson', role: 'CEO, TechFlow', text: 'Simple Services lived up to their name. The web design process was incredibly smooth!' },
                             { name: 'David Chen', role: 'Marketing Director', text: 'The advertising results we saw in the first month were beyond our expectations.' }
                         ].map((item, index) => (
-                            <div key={index} className="testimonial-card">
+                            <motion.div
+                                key={index}
+                                className="testimonial-card"
+                                whileHover={{ y: -5 }}
+                            >
                                 <p>"{item.text}"</p>
                                 <h4>{item.name}</h4>
                                 <span>{item.role}</span>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
+            {/* PRICING SECTION */}
             <section className="pricing">
                 <div className="container">
                     <h2 className="section-title">Simple Pricing</h2>
@@ -112,21 +130,20 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* FAQ SECTION (NO LAG) */}
             <section className="faq">
                 <div className="container">
                     <h2 className="section-title">Frequently Asked Questions</h2>
                     <div className="faq-list">
                         {faqs.map((faq, index) => (
-                            <div key={index} className={`faq-item ${activeFaq === index ? 'active' : ''}`}>
+                            <div key={index} className="faq-item">
                                 <button className="faq-question" onClick={() => setActiveFaq(activeFaq === index ? null : index)}>
                                     {faq.q}
                                     <span className="icon">{activeFaq === index ? '−' : '+'}</span>
                                 </button>
-                                {activeFaq === index && (
-                                    <div className="faq-answer">
-                                        <p>{faq.a}</p>
-                                    </div>
-                                )}
+                                <div className={`faq-answer ${activeFaq === index ? 'show' : ''}`}>
+                                    <p>{faq.a}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
