@@ -1,7 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Home = () => {
+    const [activeFaq, setActiveFaq] = useState(null);
+
+    const faqs = [
+        { q: "How long does a typical project take?", a: "Most website projects are completed within 2-4 weeks, while marketing campaigns can start showing results in the first few days." },
+        { q: "Do you offer custom IT solutions?", a: "Absolutely! We specialize in tailoring our services to fit your specific business needs, no matter how complex." },
+        { q: "Is there ongoing support after delivery?", a: "Yes, all our plans include a period of dedicated support to ensure everything runs smoothly." }
+    ];
+
     return (
         <div className="page-home">
             <section className="hero">
@@ -32,6 +40,25 @@ const Home = () => {
                             Get Started
                         </motion.button>
                     </motion.div>
+                </div>
+            </section>
+
+            <section className="partners">
+                <div className="container">
+                    <motion.h4
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        className="partners-title"
+                    >
+                        TRUSTED BY INNOVATIVE COMPANIES
+                    </motion.h4>
+                    <div className="partners-slider">
+                        <div className="partners-track">
+                            {['TECHFLOW', 'HYPER ISLAND', 'VOLVO', 'SPOTIFY', 'ERICSSON', 'TECHFLOW', 'HYPER ISLAND', 'VOLVO', 'SPOTIFY'].map((p, i) => (
+                                <span key={i} className="partner-logo">{p}</span>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -134,6 +161,41 @@ const Home = () => {
                                 </ul>
                                 <button className="select-plan">Choose {tier.plan}</button>
                             </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="faq">
+                <div className="container">
+                    <motion.h2
+                        className="section-title"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                    >
+                        Frequently Asked Questions
+                    </motion.h2>
+                    <div className="faq-list">
+                        {faqs.map((faq, index) => (
+                            <div key={index} className={`faq-item ${activeFaq === index ? 'active' : ''}`}>
+                                <button className="faq-question" onClick={() => setActiveFaq(activeFaq === index ? null : index)}>
+                                    {faq.q}
+                                    <span className="icon">{activeFaq === index ? '−' : '+'}</span>
+                                </button>
+                                <AnimatePresence>
+                                    {activeFaq === index && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            className="faq-answer"
+                                        >
+                                            <p>{faq.a}</p>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
                         ))}
                     </div>
                 </div>
